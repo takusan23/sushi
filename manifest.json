@@ -1,0 +1,13 @@
+{
+  "short_name": "寿司くるくる",
+  "name": "寿司くるくる",
+  "display": "standalone",
+
+  "icons": [
+    {
+      "src": "irasutota.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}

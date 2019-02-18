@@ -1,0 +1,104 @@
+<!DECODE HTML>
+
+    <head>
+        <!-- HTML アイコンせってい -->
+        <link rel="shortcut icon" href="https://raw.githubusercontent.com/takusan23/takusan23.github.io/master/irasutoya.png">
+
+        <!-- iPhone Statusber Color -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="white">
+        <!-- iPhone PWA ICON -->
+        <link rel="apple-touch-icon-precomposed" href="https://raw.githubusercontent.com/takusan23/takusan23.github.io/master/irasutoya.png" />
+
+        <link rel="manifest" href="manifest.json">
+        </script>
+        <!-- マテリアルデザインのいろいろ -->
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+        <!-- スマホでも扱いやすく、ダブルタップのズーム禁止 -->
+        <meta name="viewport" content="width=device-width" ,user-scalable=no">
+        <meta charset="utf-8">
+        <title>寿司くるくる</title>
+    </head>
+
+    <body>
+
+        <!-- なんかPWAインストールバナー表示？ -->
+        <script>
+            window.addEventListener('load', function () {
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register("/serviceWorker.js")
+                        .then(function (registration) {
+                            console.log("serviceWorker registed.");
+                        }).catch(function (error) {
+                            console.warn("serviceWorker error.", error);
+                        });
+                }
+            });
+
+        </script>
+
+
+        <!-- マテリアルデザインのやつ -->
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
+        <div class="center">
+            <h1>すし</h1>
+            <marquee id="marquee" scrollamount="25">
+                <font id="text" size="20">🍣</font>
+            </marquee>
+            <a class="waves-effect waves-light btn" onClick="add()"><i class="material-icons left">thumb_up</i>追加する</a>
+            <a class="waves-effect waves-light btn" onClick="remove()"><i
+                    class="material-icons left">insert_emoticon</i>食べる</a>
+        </div>
+        <!-- 空白 -->
+        <br>
+        <!-- 速度変更 -->
+        <div class="center">
+            <input type="number" id="speed_textbox" size="100" value="25" style="width:200px;height:40px;">
+        </div>
+        <div class="center">
+            <a class="waves-effect waves-light btn" onClick="speedChange()"><i
+                    class="material-icons left">directions_run</i>速度変更</a>
+            <a class="waves-effect waves-light btn" onClick="resetSpeed()"><i
+                    class="material-icons left">history</i>もとの速度に戻す</a>
+        </div>
+
+    </body>
+    <script language="javascript" type="text/javascript">
+        function add() {
+            //寿司追加
+            //売り切れ表示のときとか
+            if (document.getElementById("text").innerHTML == "売り切れ") {
+                document.getElementById("text").innerHTML = "🍣";
+            } else {
+                //追加
+                //if-elseは売り切れから追加すると2個増えるので
+                var sushi_text = document.getElementById("text").innerHTML;
+                document.getElementById("text").innerHTML = sushi_text + "🍣";
+            }
+        }
+        function remove() {
+            //寿司減らす
+            var sushi_text = document.getElementById("text").innerHTML;
+            document.getElementById("text").innerHTML = sushi_text.replace("🍣", "");
+            //なくなったら売り切れにする
+            if (document.getElementById("text").innerHTML.length == 0) {
+                document.getElementById("text").innerHTML = "売り切れ";
+            }
+        }
+        function speedChange() {
+            var marquee = document.getElementById("marquee");
+            //テキストボックスの値を取得　と　int 変換
+            var speed = parseInt(document.getElementById("speed_textbox").value, 25);
+            marquee.scrollAmount = speed;
+        }
+        function resetSpeed() {
+            //速度変更をもとに戻す
+            var marquee = document.getElementById("marquee");
+            marquee.scrollAmount = 25;
+        }
+    </script>
