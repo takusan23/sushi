@@ -5,12 +5,12 @@
   "start_url": "index.html",
   "icons": [
     {
-      "src": "assets/icons/irasutota.png",
+      "src": "assets/icons/irasutoya.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "assets/icons/irasutota_1.png",
+      "src": "assets/icons/irasutoya_1.png",
       "sizes": "192x192",
       "type": "image/png"
     }
