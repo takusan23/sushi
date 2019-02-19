@@ -2,4 +2,5 @@
 HTML練習
 
 りんく↑こ↓こ  
-takusan23.github.io/sushi
+[寿司くるくる](takusan23.github.io/sushi)
+
