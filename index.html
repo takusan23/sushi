@@ -2,17 +2,19 @@
 
     <head>
         <!-- HTML アイコンせってい -->
-        <link rel="shortcut icon" href="https://raw.githubusercontent.com/takusan23/sushi/master/assets/icons/irasutoya.png">
+        <link rel="shortcut icon"
+            href="https://raw.githubusercontent.com/takusan23/sushi/master/assets/icons/irasutoya.png">
 
         <!-- iPhone Statusber Color -->
         <meta name="apple-mobile-web-app-status-bar-style" content="white">
         <!-- iPhone PWA ICON -->
-        <link rel="apple-touch-icon-precomposed" href="https://raw.githubusercontent.com/takusan23/sushi/master/assets/icons/irasutoya.png" />
+        <link rel="apple-touch-icon-precomposed"
+            href="https://raw.githubusercontent.com/takusan23/sushi/master/assets/icons/irasutoya.png" />
 
         <link rel="manifest" href="manifest.json">
         </script>
         <!-- マテリアルデザインのいろいろ -->
-        <!--Import Google Icon Font-->
+        <!--Import Google Icon Font　これ httpsにすると動く-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
@@ -20,6 +22,15 @@
         <meta name="viewport" content="width=device-width" ,user-scalable=no">
         <meta charset="utf-8">
         <title>寿司くるくる</title>
+
+        <!-- ピンチイン・ピンチアウト　の無効化 -->
+        <style>
+            html,
+            css {
+                touch-action: none;
+            }
+        </style>
+
     </head>
 
     <body>
