@@ -34,6 +34,12 @@
     </head>
 
     <body>
+        <!-- ピンチイン・ピンチアウト　の無効化 iPhone用 -->
+        <script>
+            document.addEventListener('touchmove', function (e) {
+                e.preventDefault();
+            }, { passive: false });
+        </script>
 
         <!-- なんかPWAインストールバナー表示？ -->
         <script>
