@@ -66,7 +66,7 @@
         <div class="center">
             <h1>すし</h1>
             <marquee id="marquee" scrollamount="25">
-                <font id="text" size="20">🍣</font>
+                <font id="text" size="50">🍣</font>
             </marquee>
             <a class="waves-effect waves-light btn" onClick="add()"><i class="material-icons left">thumb_up</i>追加する</a>
             <a class="waves-effect waves-light btn" onClick="remove()"><i
@@ -83,6 +83,18 @@
                     class="material-icons left">directions_run</i>速度変更</a>
             <a class="waves-effect waves-light btn" onClick="resetSpeed()"><i
                     class="material-icons left">history</i>もとの速度に戻す</a>
+        </div>
+
+        <!-- 寿司の大きさ -->
+        <div class="center">
+            <input type="number" id="textsize_textbox" size="100" value="20" style="width:200px;height:40px;">
+        </div>
+
+        <div class="center">
+            <a class="waves-effect waves-light btn" onClick="setTextSize()"><i
+                    class="material-icons left">format_size</i>サイズ変更</a>
+            <a class="waves-effect waves-light btn" onClick="resetTextSize()"><i
+                    class="material-icons left">history</i>もとのサイズに戻す</a>
         </div>
 
     </body>
@@ -118,5 +130,16 @@
             //速度変更をもとに戻す
             var marquee = document.getElementById("marquee");
             marquee.scrollAmount = 25;
+        }
+        function setTextSize() {
+            //文字サイズ変更
+            var size = parseInt(document.getElementById("textsize_textbox").value, 50);
+            var sushi_text = document.getElementById("text");
+            sushi_text.style.fontSize = size;
+        }
+        function resetTextSize() {
+            //文字サイズ戻す
+            var sushi_text = document.getElementById("text");
+            sushi_text.style.fontSize = 50;
         }
     </script>
