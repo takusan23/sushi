@@ -35,11 +35,13 @@
     </head>
 
     <body>
-        <!-- ピンチイン・ピンチアウト　の無効化 iPhone用 -->
+        <!-- ピンチイン・ピンチアウト　の無効化 iPhone用  -->
+        <!-- やるつもりだったけどこれやるとiPhoneでスクロールできなくなるからピンチイン・ピンチアウトの無効化機能は廃止しました。 -->
+        <!-- まじAppleゆるさん -->
         <script>
-            document.addEventListener('touchmove', function (e) {
-                e.preventDefault();
-            }, { passive: false });
+            // document.addEventListener('touchmove', function (e) {
+            //     e.preventDefault();
+            // }, { passive: false });
         </script>
 
         <!-- なんかPWAインストールバナー表示？ -->
@@ -74,30 +76,65 @@
         </div>
         <!-- 空白 -->
         <br>
-        <!-- 速度変更 -->
-        <div class="center">
-            <input type="number" onkeypress="enterSpeed();" placeholder="流れる速度変更" id="speed_textbox" size="100"
-                value="25" style="width:200px;height:40px;">
-        </div>
-        <div class="center">
-            <a class="waves-effect waves-light btn" onClick="speedChange()"><i
-                    class="material-icons left">directions_run</i>速度変更</a>
-            <a class="waves-effect waves-light btn" onClick="resetSpeed()"><i
-                    class="material-icons left">history</i>もとの速度に戻す</a>
+
+        <!-- カードUI -->
+        <div class="container" style="max-width: 100%;height: auto;">
+
+            <div class="col s6 offset-s3 valign">
+                <div class="card light-blue lighten-3">
+                    <div class="card-content white-text">
+                        <span class="card-title">速度変更</span>
+                        <div class="center-block">
+                            <!-- 速度変更 Input-->
+                            <div class="center-block">
+                                <div class="input-field col s6">
+                                    <input type="number" onkeypress="enterSpeed();" id="speed_textbox" class="validate"
+                                        style="max-width: 100%;">
+                                    <label for="last_name">寿司の大きさ入力</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a class="waves-effect waves-light btn" onClick="speedChange()"><i
+                                class="material-icons left">directions_run</i>速度変更</a>
+                        <a class="waves-effect waves-light btn" onClick="resetSpeed()"><i
+                                class="material-icons left">history</i>もとの速度に戻す</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- 寿司の大きさ -->
-        <div class="center">
-            <input type="number" onkeypress="enterSize();" placeholder="寿司の大きさ入力" id="textsize_textbox" size="100"
-                value="50" style="width:200px;height:40px;">
+
+        <div class="container" style="max-width: 100%;height: auto;">
+            <div class="col s6 offset-s3 valign">
+                <div class="card green lighten-3">
+                    <div class="card-content white-text">
+                        <span class="card-title">サイズ変更</span>
+                        <!-- サイズ変更 Input-->
+                        <div class="center-block">
+                            <div class="input-field col s6">
+                                <input type="number" onkeypress="enterSize();" id="textsize_textbox" class="validate"
+                                    style="max-width: 100%;">
+                                <label for="last_name">寿司の大きさ入力</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+
+                        <a class="waves-effect waves-light btn" onClick="setTextSize()"><i
+                                class="material-icons left">format_size</i>サイズ変更</a>
+                        <a class="waves-effect waves-light btn" onClick="resetTextSize()"><i
+                                class="material-icons left">history</i>もとのサイズに戻す</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="center">
-            <a class="waves-effect waves-light btn" onClick="setTextSize()"><i
-                    class="material-icons left">format_size</i>サイズ変更</a>
-            <a class="waves-effect waves-light btn" onClick="resetTextSize()"><i
-                    class="material-icons left">history</i>もとのサイズに戻す</a>
-        </div>
+
+
+
+
 
     </body>
     <script language="javascript" type="text/javascript">
@@ -140,26 +177,16 @@
             if (size <= 320) {
                 var sushi_text = document.getElementById("text");
                 sushi_text.style.fontSize = size;
-            }else {
-                //ダイアログ
+            } else { //ダイアログ 
                 alert("320以下を指定してね。");
             }
-        }
-        function resetTextSize() {
-            //文字サイズ戻す
+        } function resetTextSize() {
+            //文字サイズ戻す 
             var sushi_text = document.getElementById("text");
             sushi_text.style.fontSize = 50;
-        }
-        function enterSpeed() {
-            //エンターキーでサイズ変更
-            if (window.event.keyCode == 13) {
-                speedChange();
-            }
-        }
-        function enterSize() {
-            //エンターキーで速度変更を呼び出す
-            if (window.event.keyCode == 13) {
-                setTextSize();
-            }
+        } function enterSpeed() { //エンターキーでサイズ変更 
+            if (window.event.keyCode == 13) { speedChange(); }
+        } function enterSize() { //エンターキーで速度変更を呼び出す
+            if (window.event.keyCode == 13) { setTextSize(); }
         }
     </script>
