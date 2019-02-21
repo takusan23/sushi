@@ -123,7 +123,7 @@
         function speedChange() {
             var marquee = document.getElementById("marquee");
             //テキストボックスの値を取得　と　int 変換
-            var speed = parseInt(document.getElementById("speed_textbox").value, 25);
+            var speed = document.getElementById("speed_textbox").value;
             marquee.scrollAmount = speed;
         }
         function resetSpeed() {
@@ -133,7 +133,7 @@
         }
         function setTextSize() {
             //文字サイズ変更
-            var size = parseInt(document.getElementById("textsize_textbox").value, 50);
+            var size = document.getElementById("textsize_textbox").value;
             var sushi_text = document.getElementById("text");
             sushi_text.style.fontSize = size;
         }
