@@ -66,7 +66,7 @@
         <div class="center">
             <h1>すし</h1>
             <marquee id="marquee" scrollamount="25">
-                <font id="text" size="50">🍣</font>
+                <font id="text" size="7">🍣</font>
             </marquee>
             <a class="waves-effect waves-light btn" onClick="add()"><i class="material-icons left">thumb_up</i>追加する</a>
             <a class="waves-effect waves-light btn" onClick="remove()"><i
@@ -76,7 +76,8 @@
         <br>
         <!-- 速度変更 -->
         <div class="center">
-            <input type="number" id="speed_textbox" size="100" value="25" style="width:200px;height:40px;">
+            <input type="number" onkeypress="enterSpeed();" placeholder="流れる速度変更" id="speed_textbox" size="100"
+                value="25" style="width:200px;height:40px;">
         </div>
         <div class="center">
             <a class="waves-effect waves-light btn" onClick="speedChange()"><i
@@ -87,7 +88,8 @@
 
         <!-- 寿司の大きさ -->
         <div class="center">
-            <input type="number" id="textsize_textbox" size="100" value="20" style="width:200px;height:40px;">
+            <input type="number" onkeypress="enterSize();" placeholder="寿司の大きさ入力" id="textsize_textbox" size="100"
+                value="50" style="width:200px;height:40px;">
         </div>
 
         <div class="center">
@@ -134,12 +136,30 @@
         function setTextSize() {
             //文字サイズ変更
             var size = document.getElementById("textsize_textbox").value;
-            var sushi_text = document.getElementById("text");
-            sushi_text.style.fontSize = size;
+            //320以上だとバグるらしい
+            if (size <= 320) {
+                var sushi_text = document.getElementById("text");
+                sushi_text.style.fontSize = size;
+            }else {
+                //ダイアログ
+                alert("320以下を指定してね。");
+            }
         }
         function resetTextSize() {
             //文字サイズ戻す
             var sushi_text = document.getElementById("text");
             sushi_text.style.fontSize = 50;
+        }
+        function enterSpeed() {
+            //エンターキーでサイズ変更
+            if (window.event.keyCode == 13) {
+                speedChange();
+            }
+        }
+        function enterSize() {
+            //エンターキーで速度変更を呼び出す
+            if (window.event.keyCode == 13) {
+                setTextSize();
+            }
         }
     </script>
